@@ -1,0 +1,44 @@
+version: '3.1'
+
+services:
+
+  mongodb-db:
+    image: mongo:5.0.9
+    environment:
+      MONGO_INITDB_DATABASE: test_db
+    ports:
+      - 27018:27017
+
+  redis-db:
+    image: "redis/redis-stack:latest"
+    container_name: redis_db
+    ports:
+      - 6380:6379
+
+  mysql-db:
+    image: mysql:8.0.29
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_DATABASE: test_db
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - 3307:3306
+    volumes: 
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  postgres-db:
+    image: postgres:9.5.10
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: test_db
+    ports:
+      - '5432:5432'
+    volumes: 
+      - ./db/init.sql:/docker-entrypoint-initdb.d/create_tables.sql
+
+volumes:
+  mysql_db:
+    driver: local

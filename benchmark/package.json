@@ -1,0 +1,26 @@
+{
+  "name": "onderzoek-ipsenh",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "ts-node benchmark.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "csv-writer": "^1.6.0",
+    "mongodb": "^4.7.0",
+    "mysql": "^2.18.1",
+    "pg": "^8.7.3",
+    "pg-format": "^1.0.4",
+    "process": "^0.11.10",
+    "redis": "^4.1.0",
+    "redis-om": "^0.3.4"
+  },
+  "devDependencies": {
+    "@types/mysql": "^2.15.21",
+    "@types/pg": "^8.6.5"
+  }
+}
